@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="北京控之星自动化技术有限公司自建立之初就定位于为能源领域的用户提供基于世界顶级产品和服务的自动化解决方案，特别是石油化工和发电领域的动力设备控制系统，范围涵盖汽轮机，燃气轮机，水轮机及压缩机，往复式内燃机的控制和保护。" name="description" />
+    <meta content="Constar, Automation, 石油, 化工, 发电" name="keywords" />
+    <meta content="Constar" name="author" />
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+    <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+    <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+    <link href="/manifest.json" rel="manifest" />
+    <link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon" />
+    <meta content="#ffffff" name="theme-color" />
+    <title>Steam Turbine Control</title>
+    <link href="/static/dist/semantic-ui/semantic.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/dist/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/dist/fonts.css/fonts.css" rel="stylesheet" type="text/css" />
+    <link href="/static/dist/share/css/share.min.css" rel="stylesheet" />
+    <link href="/static/stylesheets/default.css" rel="stylesheet" type="text/css" />
+    <link href="/static/stylesheets/pandoc-code-highlight.css" rel="stylesheet" type="text/css" />
+    <script src="/static/dist/jquery/jquery.min.js"></script>
+  </head>
+  <body lang="en">
+    <div id="content">
+      <nav class="ui borderless menu" id="topnav">
+        <div class="ui container grid">
+          <div class="row">
+            <a class="item" href="/en/">
+              <div class="ui image">
+                <img src="/static/logo/gravatar/logo_en.png" />
+              </div>
+            </a>
+            <div class="right menu">
+              <div class="item">
+                <a href="/zh"><i class="china flag"></i></a><a href="/en"><i class="united kingdom flag"></i></a>
+              </div>
+              <div class="item">
+                <div class="ui right icon action input" id="search">
+                  <input name="search" placeholder="Search..." type="text" />
+                  <div class="ui icon button">
+                    <i class="search icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <nav class="ui borderless menu computer only sticky">
+        <div class="ui container grid">
+          <div class="row">
+            <a class="item" href="/en" id="nav-home">Home</a>
+            <div class="ui pointing dropdown item" id="nav-intro">
+              <a href="/en/intro">About Us</a><i class="down angle icon"></i>
+              <div class="menu">
+                <a class="item" href="/en/intro/who">About Us</a><a class="item" href="/en/intro/contact">Contact Us</a>
+              </div>
+            </div>
+            <div class="ui pointing dropdown item" id="nav-solutions">
+              <a href="/en/solutions">Solution</a><i class="down angle icon"></i>
+              <div class="menu">
+                <a class="item" href="/en/solutions/steam">Steam Turbine Control</a><a class="item" href="/en/solutions/gas">Gas Turbine Control</a><a class="item" href="/en/solutions/compressor">Compressor Control & ITCC</a><a class="item" href="/en/solutions/ets">Turbine Protection (ETS/ESD/SIS)</a><a class="item" href="/en/solutions/engine">Engine Control</a><a class="item" href="/en/solutions/hydro">Hydro Turbine Control</a>
+              </div>
+            </div>
+            <div class="ui pointing dropdown item" id="nav-services">
+              <a href="/en/services">Service</a><i class="down angle icon"></i>
+              <div class="menu">
+                <a class="item" href="/en/services/projects">Projects</a><a class="item" href="/en/services/service">Service</a><a class="item" href="/en/services/consulting">Consulting</a><a class="item" href="/en/services/training">Training</a><a class="item" href="/en/services/repair">Product Repair</a>
+              </div>
+            </div>
+            <div class="ui pointing dropdown item" id="nav-services">
+              <a href="/en/case">Case Study</a><i class="down angle icon"></i>
+              <div class="menu">
+                <a class="item" href="/en/case/case">Case Study</a><a class="item" href="/en/case/testimonial">Testimonial</a>
+              </div>
+            </div>
+            <a class="item" href="/en/business" id="nav-business">Business Partner</a><a class="item" href="/en/contact" id="nav-contact">Contact</a>
+            <div class="right floated item">
+              <a href="#"><i class="wechat icon green" data-html="&lt;img class=&#39;ui image&#39; src=&#39;/static/images/wechat.jpg&#39;&gt;" data-position="bottom center"></i></a><a href="https://www.facebook.com/ConstarInc"><i class="facebook icon blue"></i></a><a href="https://www.linkedin.com/company/constarinc"><i class="linkedin icon blue"></i></a><a href="https://twitter.com/ConstarInc"><i class="twitter icon blue"></i></a><a href="https://www.youtube.com/channel/UChBKkOrROVa_1pCEmoKHNEw"><i class="youtube icon red"></i></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <nav class="ui borderless fixed menu tablet mobile only">
+        <div class="ui container grid">
+          <div class="row">
+            <a class="item" href="/en/">
+              <div class="ui image">
+                <img src="/static/logo/gravatar/logo_en.png" />
+              </div>
+            </a>
+            <div class="right menu">
+              <a class="menu item">
+                <div class="ui basic icon toggle button">
+                  <i class="content icon"></i>
+                </div>
+              </a>
+            </div>
+            <div class="ui vertical accordion borderless fluid menu">
+              <a class="item" href="/en">Home</a>
+              <div class="item">
+                <div class="title">
+                  About Us<i class="dropdown icon"></i>
+                </div>
+                <div class="content">
+                  <a class="item" href="/en/intro/who">About Us</a><a class="item" href="/en/intro/contact">Contact Us</a>
+                </div>
+              </div>
+              <div class="item">
+                <div class="title">
+                  Solution<i class="dropdown icon"></i>
+                </div>
+                <div class="content">
+                  <a class="item" href="/en/solutions/steam">Steam Turbine Control</a><a class="item" href="/en/solutions/gas">Gas Turbine Control</a><a class="item" href="/en/solutions/compressor">Compressor Control & ITCC</a><a class="item" href="/en/solutions/ets">Turbine Protection (ETS/ESD/SIS)</a><a class="item" href="/en/solutions/engine">Engine Control</a><a class="item" href="/en/solutions/hydro">Hydro Turbine Control</a>
+                </div>
+              </div>
+              <div class="item">
+                <div class="title">
+                  Service<i class="dropdown icon"></i>
+                </div>
+                <div class="content">
+                  <a class="item" href="/en/services/projects">Projects</a><a class="item" href="/en/services/service">Service</a><a class="item" href="/en/services/consulting">Consulting</a><a class="item" href="/en/services/training">Training</a><a class="item" href="/en/services/repair">Product Repair</a>
+                </div>
+              </div>
+              <div class="item">
+                <div class="title">
+                  Case Study<i class="dropdown icon"></i>
+                </div>
+                <div class="content">
+                  <a class="item" href="/en/case/case">Case Study</a><a class="item" href="/en/case/testimonial">Testimonial</a>
+                </div>
+              </div>
+              <a class="item" href="/en/business">Business Partner</a><a class="item" href="/en/contact">Contact</a>
+              <div class="item">
+                <div class="ui left icon acton input" id="search">
+                  <input name="search" placeholder="Search..." type="text" />
+                  <div class="ui icon button">
+                    <i class="search icon"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <a href="/zh"><i class="china flag"></i></a><a href="/en"><i class="united kingdom flag"></i></a>
+              </div>
+              <div class="item">
+                <a href="#"><i class="wechat icon green" data-html="&lt;img class=&#39;ui image&#39; src=&#39;/static/images/wechat.jpg&#39;&gt;" data-position="bottom center"></i></a><a href="https://www.facebook.com/ConstarInc"><i class="facebook icon blue"></i></a><a href="https://www.linkedin.com/company/constarinc"><i class="linkedin icon blue"></i></a><a href="https://twitter.com/ConstarInc"><i class="twitter icon blue"></i></a><a href="https://www.youtube.com/account"><i class="youtube icon red"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <script>
+        $(document).ready(function() {
+          // Make the text link in dropdown item itself clickable
+          $('.ui.dropdown').dropdown({
+            on: 'hover'
+          });
+        
+          $('.ui.accordion').accordion();
+        
+          // bind "hide and show vertical menu" event to top right icon button
+          $('.ui.toggle.button').click(function() {
+            $('.ui.vertical.menu').toggle("250", "linear")
+          });
+        
+          $('.ui.sticky').sticky({
+            context: '#content'
+          });
+        
+          // 微信图标hover时显示二维码
+          $('.wechat.icon').popup({
+            on: 'hover'
+          });
+        
+          $('input[name="search"]').keydown(function(e) {
+            if (e.keyCode == 13) {
+              var input = document.querySelector('input[name="search"]');
+              window.location.href = "https://www.google.com/search?q=site%3Ahttps%3A%2F%2Fwww.constar.com.cn&q=" + input.value;
+            }
+          });
+          $('#search .button').click(function() {
+            var input = document.querySelector('input[name="search"]');
+            window.location.href = "https://www.google.com/search?q=site%3Ahttps%3A%2F%2Fwww.constar.com.cn&q=" + input.value;
+          });
+        });
+      </script><div class="ui stackable container grid" id="article">
+        <div class="computer only row">
+          <div class="ui very padded segment article">
+            <article class="ui stackable divided grid">
+              <div class="row">
+                <div class="three wide column">
+                  <aside class="ui vertical following accordion fluid text menu">
+                    <div class="item">
+                      <a href="/en">Home</a>
+                    </div>
+                    <div class="item" id="intro">
+                      <div class="title">
+                        <a href="/en/intro">About Us</a><i class="dropdown icon"></i>
+                      </div>
+                      <div class="content">
+                        <ul class="ui list">
+                          <li>
+                            <a href="/en/intro/who">About Us</a>
+                          </li>
+                          <li>
+                            <a href="/en/intro/contact">Contact Us</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="item" id="solutions">
+                      <div class="title">
+                        <a href="/en/solutions">Solution</a><i class="dropdown icon"></i>
+                      </div>
+                      <div class="content">
+                        <ul class="ui list">
+                          <li>
+                            <a href="/en/solutions/steam">Steam Turbine Control</a>
+                          </li>
+                          <li>
+                            <a href="/en/solutions/gas">Gas Turbine Control</a>
+                          </li>
+                          <li>
+                            <a href="/en/solutions/compressor">Compressor Control & ITCC</a>
+                          </li>
+                          <li>
+                            <a href="/en/solutions/ets">Turbine Protection (ETS/ESD/SIS)</a>
+                          </li>
+                          <li>
+                            <a href="/en/solutions/engine">Engine Control</a>
+                          </li>
+                          <li>
+                            <a href="/en/solutions/hydro">Hydro Turbine Control</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="item" id="services">
+                      <div class="title">
+                        <a href="/en/services">Service</a><i class="dropdown icon"></i>
+                      </div>
+                      <div class="content">
+                        <ul class="ui list">
+                          <li>
+                            <a href="/en/services/projects">Projects</a>
+                          </li>
+                          <li>
+                            <a href="/en/services/service">Service</a>
+                          </li>
+                          <li>
+                            <a href="/en/services/consulting">Consulting</a>
+                          </li>
+                          <li>
+                            <a href="/en/services/training">Training</a>
+                          </li>
+                          <li>
+                            <a href="/en/services/repair">Product Repair</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="item" id="Case Study">
+                      <div class="title">
+                        <a href="/en/case">Case Study</a><i class="dropdown icon"></i>
+                      </div>
+                      <div class="content">
+                        <ul class="ui list">
+                          <li>
+                            <a href="/en/case/case">Case Study</a>
+                          </li>
+                          <li>
+                            <a href="/en/case/testimonial">Testimonial</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="title">
+                        <a href="/en/business">Business Partner</a>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="title">
+                        <a href="/en/contact">Contact</a>
+                      </div>
+                    </div>
+                  </aside>
+                </div>
+                <div class="thirteen wide column">
+                  <div class="article-nav">
+                    <div class="ui breadcrumb">
+                      <a class="section" href="/en">Home</a><i class="right angle icon divider"></i><a class="section" href="/en/solutions">Solutions<i class="right angle icon divider"></i><a class="section" href="/en/solutions/steam">Steam Turbine Control</a></a>
+                    </div>
+                  </div>
+                  <div class="ui divider"></div>
+                  <div class="article-body">
+                    <h3 id="steam-turbine-control">Steam Turbine Control</h3>
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/solution/steam/article_steam.jpg">
+                    <div class="ui bottom attached basic label" style="font-weight:normal">
+                    SINOPEC Yizheng DAE Co-Generation Steam Turbine Control Project
+                    </div>
+                    </div>
+                    <p>Constar delivers turnkey projects and comprehensive services of steam turbine control system. One the one hand, Constar works closely and keeps long-standing relationship with various turbine manufactures, including Harbin Turbine Works, Qingdao Jieneng Turbine Works, Siemens Industrial Turbine, etc., to develop the performance-driven control solutions, making OEM's steam turbine more competitive. On the other hand, Constar has successfully directly installed dozens of steam turbine control system in the petrochemical, steel, power generation fields. </p>
+                    <p>Focusing on energy control solution for twenty years, Constar has developed strong engineering expertise of steam turbine control system, long-standing relationship with customers, and a professional engineering team. Also, with the rich hands-on engineering experience, the understanding of unique requirement in China market, and efficient cross culture communication, Constar successfully integrates world's leading technology with China local engineering strength, and has successfully installed dozens of turbine control and protection projects, ranging from small industrial turbine to 1000MW large steam turbine for nuclear power station, and our customers include SINOPEC, CNPC, CNOOC, An Steel, Bao Steel, etc.</p>
+                    <h3 id="related-services">Related Services</h3>
+                    <p><a style="font-weight:normal" class="ui blue basic circular label" href="/en/services/projects" > Projects </a> <a style="font-weight:normal" class="ui blue basic circular label" href="/en/services/service" > Service </a> <a style="font-weight:normal" class="ui blue basic circular label" href="/en/services/consulting" > Consulting </a> <a style="font-weight:normal" class="ui blue basic circular label" href="/en/services/training" > Training </a> <a style="font-weight:normal" class="ui blue basic circular label" href="/en/services/repair" > Product Repair </a></p>
+                    <h3 id="related-case-study">Related Case Study</h3>
+                    <div id="cases" class="ui link stackable cards">
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-jinling1-activator"> <img src="/static/images/en/case/steam/jinling1.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINOPEC Jinling Unit1
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-jinling2-activator"> <img src="/static/images/en/case/steam/jinling2.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINOPEC Jinling Unit2
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-yizheng3-activator"> <img src="/static/images/en/case/steam/yizheng3.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINOPEC Yizheng Unit3
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-tangshan2-activator"> <img src="/static/images/en/case/steam/tangshan2.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    BANPU Tangshan Unit2
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-haihua5-activator"> <img src="/static/images/en/case/steam/haihua5.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    CNOOC Haihua Unit5
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-meishan4-activator"> <img src="/static/images/en/case/steam/meishan4.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    Meishan Steel Unit4
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-meishan6-activator"> <img src="/static/images/en/case/steam/meishan6.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    Meishan Steel Unit6
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-sinpu1-activator"> <img src="/static/images/en/case/steam/sinpu1.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINPU Chemical Unit1
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-sinpu2-activator"> <img src="/static/images/en/case/steam/sinpu2.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINPU Chemical Unit2
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-sinpu3-activator"> <img src="/static/images/en/case/steam/sinpu3.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINPU Chemical Unit3
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-sinpu4-activator"> <img src="/static/images/en/case/steam/sinpu4.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINPU Chemical Unit4
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-shijiazhuang2-activator"> <img src="/static/images/en/case/steam/shijiazhuang2.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINOPEC Shijiazhuang Unit2
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-jinling1" class="ui modal">
+                    <div class="header">
+                    SINOPEC Jinling Petro Unit1 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/jinling1.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    SINOPEC Jinling Petro Unit1 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    <p>SINOPEC Jinling Petro Unit1 is a 60MW co-generation genset, which was installed in 1990's by Shanghai Steam Turbine Works. The turbine was originally installed with hydraulic governors regulating turbine power and two extraction steam pressures. Over decades of operation, the hydraulic control system sufferred leaking, friction and deteriorated accuracy.</p>
+                    Constar upgraded the turbine hydraulic governor with Woodward Micronet TMR control system in year 2002. The upgraded DEH is TMR(Triple Module Redundancy) in hardware and powered with Ratio/Limiter algorithm. The upgraded control system not only improved reliability and accuracy, but also made operation more friendly. Since installation, the genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </P>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 60MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Shanghai Steam Turbine Works
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH Upgrade
+                    </li>
+                    <li>
+                    Date: Year 2002
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-jinling2" class="ui modal">
+                    <div class="header">
+                    SINOPEC Jinling Petro Unit2 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/jinling2.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    SINOPEC Jinling Petro Unit2 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    <p>SINOPEC Jinling Petro Unit2 is a 60MW co-generation genset, which was installed in 1990's by Shanghai Steam Turbine Works. The turbine was originally installed with hydraulic governors regulating turbine power and two extraction steam pressures. Over decades of operation, the hydraulic control system sufferred leaking, friction and deteriorated accuracy.</p>
+                    Constar upgraded the turbine hydraulic governor with Woodward Micronet TMR control system in year 2002. The upgraded DEH is TMR(Triple Module Redundancy) in hardware and powered with Ratio/Limiter algorithm. The upgraded control system not only improved reliability and accuracy, but also made operation more friendly. Since installation, the genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 60MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Shanghai Steam Turbine Works
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH Upgrade
+                    </li>
+                    <li>
+                    Date: Year 2003
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-yizheng3" class="ui modal">
+                    <div class="header">
+                    SINOPEC Yizheng Petro Unit3 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/yizheng3.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    SINOPEC Yizheng Petro Unit3 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    <p>SINOPEC Yizheng Petro Unit3 is a 60MW co-generation genset, which was installed in 1990's by Shanghai Steam Turbine Works. The turbine was originally installed with hydraulic governors regulating turbine power and two extraction steam pressures. Over decades of operation, the hydraulic control system sufferred leaking, friction and deteriorated accuracy.</p>
+                    Constar upgraded the turbine hydraulic governor with Woodward Micronet TMR control system in year 2003. The upgraded DEH is TMR(Triple Module Redundancy) in hardware and powered with Ratio/Limiter algorithm. The upgraded control system not only improved reliability and accuracy, but also made operation more friendly. Since installation, the genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 60MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Shanghai Steam Turbine Works
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH Upgrade
+                    </li>
+                    <li>
+                    Date: Year 2003
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-tangshan2" class="ui modal">
+                    <div class="header">
+                    Banpu Tangshan Unit2 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/tangshan2.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    Banpu Tangshan Unit2 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    Banpu Tangshan Unit2 is a 50MW co-generation genset installed in 1990's by Harbin Steam Turbine Works. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm and the TM-25 actuator that is the core of servo system. DEH system controls speed, power and two extraction pressures. The genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 50MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Harbin Steam Turbine Works
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH Upgrade
+                    </li>
+                    <li>
+                    Date: Year 1997
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-haihua5" class="ui modal">
+                    <div class="header">
+                    CNOOC Haihua Unit5 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/haihua5.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    CNOOC Haihua Unit5 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    CNOOC Haihua Unit5 is a 25MW co-generation genset installed in year 2003 by Beijing Heavy Machine Works. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm and the TM-25 actuator that is the core of servo system. DEH system controls speed, power and two extraction pressures. The genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 25MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Beijinng Heavy Machine Works
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH, New Installation
+                    </li>
+                    <li>
+                    Date: Year 2003
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-meishan4" class="ui modal">
+                    <div class="header">
+                    Meishan Steel Unit4 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/meishan4.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    Meishan Steel Unit4 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    Meishan Steel Unit4 is a 60MW double automatic extraction co-generation genset installed in year 2004 by Shanghai Steam Turbine Works, the turbine is running with 14MPa hydraulic oil system. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm. DEH system controls speed, power and two extraction pressures. The genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 60MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Shanghai Steam Turbine Works
+                    </li>
+                    <li>
+                    Governor Oil: 14MPa, High Pressure
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH, New Installation
+                    </li>
+                    <li>
+                    Date: Year 2004
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-meishan6" class="ui modal">
+                    <div class="header">
+                    Meishan Steel Unit6 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/meishan6.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    Meishan Steel Unit6 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    Meishan Steel Unit6 is a 60MW double automatic extraction co-generation genset installed in year 2006 by Shanghai Steam Turbine Works, the turbine is running with 14MPa hydraulic oil system. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm. DEH system controls speed, power and two extraction pressures. The genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 60MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Shanghai Steam Turbine Works
+                    </li>
+                    <li>
+                    Governor Oil: 14MPa, High Pressure
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH, New Installation
+                    </li>
+                    <li>
+                    Date: Year 2006
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-sinpu1" class="ui modal">
+                    <div class="header">
+                    Sinpu Chemical Unit1 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/sinpu1.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    Sinpu Chemical Unit1 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    Sinpu Chemical Unit1 is a 60MW double automatic extraction co-generation genset installed in year 2005 by Shanghai Steam Turbine Works, the turbine is running with 14MPa hydraulic oil system. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm. DEH system controls speed, power and two extraction pressures. The genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 60MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Shanghai Steam Turbine Works
+                    </li>
+                    <li>
+                    Governor Oil: 14MPa, High Pressure
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH, New Installation
+                    </li>
+                    <li>
+                    Date: Year 2005
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-sinpu2" class="ui modal">
+                    <div class="header">
+                    Sinpu Chemical Unit2 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/sinpu2.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    Sinpu Chemical Unit2 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    Sinpu Chemical Unit2 is a 60MW double automatic extraction co-generation genset installed in year 2006 by Shanghai Steam Turbine Works, the turbine is running with 14MPa hydraulic oil system. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm. DEH system controls speed, power and two extraction pressures. The genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 60MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Shanghai Steam Turbine Works
+                    </li>
+                    <li>
+                    Governor Oil: 14MPa, High Pressure
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH, New Installation
+                    </li>
+                    <li>
+                    Date: Year 2006
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-sinpu3" class="ui modal">
+                    <div class="header">
+                    Sinpu Chemical Unit3 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/sinpu3.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    Sinpu Chemical Unit3 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    Sinpu Chemical Unit3 is a 50MW back pressure &amp; extraction co-generation genset installed in year 2015 by Nanjing Steam Turbine Works, the turbine is running with 14MPa hydraulic oil system. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm. DEH system controls speed, power, extraction pressure, and exhaust pressure. The genset has been working stably and safely since installation, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Extration &amp; Exhause Pressure Turbine
+                    </li>
+                    <li>
+                    Rated Power: 50MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Nanjing Steam Turbine Works
+                    </li>
+                    <li>
+                    Governor Oil: 14MPa, High Pressure
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH, New Installation
+                    </li>
+                    <li>
+                    Date: Year 2015
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-sinpu4" class="ui modal">
+                    <div class="header">
+                    Sinpu Chemical Unit4 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/sinpu4.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    Sinpu Chemical Unit4 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    Sinpu Chemical Unit4 is a 50MW back pressure &amp; extraction co-generation genset installed in year 2016 by Nanjing Steam Turbine Works, the turbine is running with 14MPa hydraulic oil system. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm. DEH system controls speed, power, extraction pressure, and exhaust pressure. The genset has been working stably and safely since installation, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Extration &amp; Exhause Pressure Turbine
+                    </li>
+                    <li>
+                    Rated Power: 50MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Nanjing Steam Turbine Works
+                    </li>
+                    <li>
+                    Governor Oil: 14MPa, High Pressure
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH, New Installation
+                    </li>
+                    <li>
+                    Date: Year 2016
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-shijiazhuang2" class="ui modal">
+                    <div class="header">
+                    SINOPEC Shijiazhuang Unit2
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/shijiazhuang2.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    SINOPEC Shijiazhuang Unit2&lt;
+                    </div>
+                    </div>
+                    <p>
+                    SINOPEC Shijiazhuang Unit2 is a single extraction steam turbine manufactured by Nanjing Steam Turbine Works. The turbine was installed originally with hydraulic governor, and it was experienced an unsuccessfully upgrade to digital control by other company in 2000. In 2015, Constar successfully retrofit control system with 505E controller and specially designed hydraulic system. The control performance was very satisfied and the turbine has been running stably and safely since then.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type:Single Extraction Steam Turbine
+                    </li>
+                    <li>
+                    Rated Power:25MW
+                    </li>
+                    <li>
+                    Turbine Manufacture:Nanjing Steam Turbine Works
+                    </li>
+                    <li>
+                    Control System:505E
+                    </li>
+                    <li>
+                    Project Type:DEH System
+                    </li>
+                    <li>
+                    Project Date:Year 2015
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="tablet mobile only row" id="mobile-row">
+          <div class="ui very padded segment article">
+            <article class="ui stackable divided grid">
+              <div class="row">
+                <div class="column">
+                  <div class="article-nav">
+                    <div class="ui breadcrumb">
+                      <a class="section" href="/en">Home</a><i class="right angle icon divider"></i><a class="section" href="/en/solutions">Solutions<i class="right angle icon divider"></i><a class="active section" href="/en/solutions/steam">Steam Turbine Control</a></a>
+                    </div>
+                  </div>
+                  <div class="ui divider"></div>
+                  <div class="article-body">
+                    <h3 id="steam-turbine-control">Steam Turbine Control</h3>
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/solution/steam/article_steam.jpg">
+                    <div class="ui bottom attached basic label" style="font-weight:normal">
+                    SINOPEC Yizheng DAE Co-Generation Steam Turbine Control Project
+                    </div>
+                    </div>
+                    <p>Constar delivers turnkey projects and comprehensive services of steam turbine control system. One the one hand, Constar works closely and keeps long-standing relationship with various turbine manufactures, including Harbin Turbine Works, Qingdao Jieneng Turbine Works, Siemens Industrial Turbine, etc., to develop the performance-driven control solutions, making OEM's steam turbine more competitive. On the other hand, Constar has successfully directly installed dozens of steam turbine control system in the petrochemical, steel, power generation fields. </p>
+                    <p>Focusing on energy control solution for twenty years, Constar has developed strong engineering expertise of steam turbine control system, long-standing relationship with customers, and a professional engineering team. Also, with the rich hands-on engineering experience, the understanding of unique requirement in China market, and efficient cross culture communication, Constar successfully integrates world's leading technology with China local engineering strength, and has successfully installed dozens of turbine control and protection projects, ranging from small industrial turbine to 1000MW large steam turbine for nuclear power station, and our customers include SINOPEC, CNPC, CNOOC, An Steel, Bao Steel, etc.</p>
+                    <h3 id="related-services">Related Services</h3>
+                    <p><a style="font-weight:normal" class="ui blue basic circular label" href="/en/services/projects" > Projects </a> <a style="font-weight:normal" class="ui blue basic circular label" href="/en/services/service" > Service </a> <a style="font-weight:normal" class="ui blue basic circular label" href="/en/services/consulting" > Consulting </a> <a style="font-weight:normal" class="ui blue basic circular label" href="/en/services/training" > Training </a> <a style="font-weight:normal" class="ui blue basic circular label" href="/en/services/repair" > Product Repair </a></p>
+                    <h3 id="related-case-study">Related Case Study</h3>
+                    <div id="cases" class="ui link stackable cards">
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-jinling1-activator"> <img src="/static/images/en/case/steam/jinling1.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINOPEC Jinling Unit1
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-jinling2-activator"> <img src="/static/images/en/case/steam/jinling2.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINOPEC Jinling Unit2
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-yizheng3-activator"> <img src="/static/images/en/case/steam/yizheng3.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINOPEC Yizheng Unit3
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-tangshan2-activator"> <img src="/static/images/en/case/steam/tangshan2.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    BANPU Tangshan Unit2
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-haihua5-activator"> <img src="/static/images/en/case/steam/haihua5.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    CNOOC Haihua Unit5
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-meishan4-activator"> <img src="/static/images/en/case/steam/meishan4.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    Meishan Steel Unit4
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-meishan6-activator"> <img src="/static/images/en/case/steam/meishan6.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    Meishan Steel Unit6
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-sinpu1-activator"> <img src="/static/images/en/case/steam/sinpu1.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINPU Chemical Unit1
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-sinpu2-activator"> <img src="/static/images/en/case/steam/sinpu2.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINPU Chemical Unit2
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-sinpu3-activator"> <img src="/static/images/en/case/steam/sinpu3.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINPU Chemical Unit3
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-sinpu4-activator"> <img src="/static/images/en/case/steam/sinpu4.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINPU Chemical Unit4
+                    </div>
+                    </div>
+                    <div class="card" style="width:200px">
+                    <a class="image" id="modal-shijiazhuang2-activator"> <img src="/static/images/en/case/steam/shijiazhuang2.jpg"> </a>
+                    <div class="ui bottom attached center aligned segment" style="font-size:10px;padding:0px">
+                    SINOPEC Shijiazhuang Unit2
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-jinling1" class="ui modal">
+                    <div class="header">
+                    SINOPEC Jinling Petro Unit1 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/jinling1.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    SINOPEC Jinling Petro Unit1 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    <p>SINOPEC Jinling Petro Unit1 is a 60MW co-generation genset, which was installed in 1990's by Shanghai Steam Turbine Works. The turbine was originally installed with hydraulic governors regulating turbine power and two extraction steam pressures. Over decades of operation, the hydraulic control system sufferred leaking, friction and deteriorated accuracy.</p>
+                    Constar upgraded the turbine hydraulic governor with Woodward Micronet TMR control system in year 2002. The upgraded DEH is TMR(Triple Module Redundancy) in hardware and powered with Ratio/Limiter algorithm. The upgraded control system not only improved reliability and accuracy, but also made operation more friendly. Since installation, the genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </P>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 60MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Shanghai Steam Turbine Works
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH Upgrade
+                    </li>
+                    <li>
+                    Date: Year 2002
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-jinling2" class="ui modal">
+                    <div class="header">
+                    SINOPEC Jinling Petro Unit2 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/jinling2.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    SINOPEC Jinling Petro Unit2 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    <p>SINOPEC Jinling Petro Unit2 is a 60MW co-generation genset, which was installed in 1990's by Shanghai Steam Turbine Works. The turbine was originally installed with hydraulic governors regulating turbine power and two extraction steam pressures. Over decades of operation, the hydraulic control system sufferred leaking, friction and deteriorated accuracy.</p>
+                    Constar upgraded the turbine hydraulic governor with Woodward Micronet TMR control system in year 2002. The upgraded DEH is TMR(Triple Module Redundancy) in hardware and powered with Ratio/Limiter algorithm. The upgraded control system not only improved reliability and accuracy, but also made operation more friendly. Since installation, the genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 60MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Shanghai Steam Turbine Works
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH Upgrade
+                    </li>
+                    <li>
+                    Date: Year 2003
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-yizheng3" class="ui modal">
+                    <div class="header">
+                    SINOPEC Yizheng Petro Unit3 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/yizheng3.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    SINOPEC Yizheng Petro Unit3 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    <p>SINOPEC Yizheng Petro Unit3 is a 60MW co-generation genset, which was installed in 1990's by Shanghai Steam Turbine Works. The turbine was originally installed with hydraulic governors regulating turbine power and two extraction steam pressures. Over decades of operation, the hydraulic control system sufferred leaking, friction and deteriorated accuracy.</p>
+                    Constar upgraded the turbine hydraulic governor with Woodward Micronet TMR control system in year 2003. The upgraded DEH is TMR(Triple Module Redundancy) in hardware and powered with Ratio/Limiter algorithm. The upgraded control system not only improved reliability and accuracy, but also made operation more friendly. Since installation, the genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 60MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Shanghai Steam Turbine Works
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH Upgrade
+                    </li>
+                    <li>
+                    Date: Year 2003
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-tangshan2" class="ui modal">
+                    <div class="header">
+                    Banpu Tangshan Unit2 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/tangshan2.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    Banpu Tangshan Unit2 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    Banpu Tangshan Unit2 is a 50MW co-generation genset installed in 1990's by Harbin Steam Turbine Works. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm and the TM-25 actuator that is the core of servo system. DEH system controls speed, power and two extraction pressures. The genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 50MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Harbin Steam Turbine Works
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH Upgrade
+                    </li>
+                    <li>
+                    Date: Year 1997
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-haihua5" class="ui modal">
+                    <div class="header">
+                    CNOOC Haihua Unit5 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/haihua5.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    CNOOC Haihua Unit5 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    CNOOC Haihua Unit5 is a 25MW co-generation genset installed in year 2003 by Beijing Heavy Machine Works. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm and the TM-25 actuator that is the core of servo system. DEH system controls speed, power and two extraction pressures. The genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 25MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Beijinng Heavy Machine Works
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH, New Installation
+                    </li>
+                    <li>
+                    Date: Year 2003
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-meishan4" class="ui modal">
+                    <div class="header">
+                    Meishan Steel Unit4 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/meishan4.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    Meishan Steel Unit4 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    Meishan Steel Unit4 is a 60MW double automatic extraction co-generation genset installed in year 2004 by Shanghai Steam Turbine Works, the turbine is running with 14MPa hydraulic oil system. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm. DEH system controls speed, power and two extraction pressures. The genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 60MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Shanghai Steam Turbine Works
+                    </li>
+                    <li>
+                    Governor Oil: 14MPa, High Pressure
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH, New Installation
+                    </li>
+                    <li>
+                    Date: Year 2004
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-meishan6" class="ui modal">
+                    <div class="header">
+                    Meishan Steel Unit6 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/meishan6.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    Meishan Steel Unit6 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    Meishan Steel Unit6 is a 60MW double automatic extraction co-generation genset installed in year 2006 by Shanghai Steam Turbine Works, the turbine is running with 14MPa hydraulic oil system. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm. DEH system controls speed, power and two extraction pressures. The genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 60MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Shanghai Steam Turbine Works
+                    </li>
+                    <li>
+                    Governor Oil: 14MPa, High Pressure
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH, New Installation
+                    </li>
+                    <li>
+                    Date: Year 2006
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-sinpu1" class="ui modal">
+                    <div class="header">
+                    Sinpu Chemical Unit1 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/sinpu1.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    Sinpu Chemical Unit1 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    Sinpu Chemical Unit1 is a 60MW double automatic extraction co-generation genset installed in year 2005 by Shanghai Steam Turbine Works, the turbine is running with 14MPa hydraulic oil system. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm. DEH system controls speed, power and two extraction pressures. The genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 60MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Shanghai Steam Turbine Works
+                    </li>
+                    <li>
+                    Governor Oil: 14MPa, High Pressure
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH, New Installation
+                    </li>
+                    <li>
+                    Date: Year 2005
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-sinpu2" class="ui modal">
+                    <div class="header">
+                    Sinpu Chemical Unit2 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/sinpu2.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    Sinpu Chemical Unit2 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    Sinpu Chemical Unit2 is a 60MW double automatic extraction co-generation genset installed in year 2006 by Shanghai Steam Turbine Works, the turbine is running with 14MPa hydraulic oil system. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm. DEH system controls speed, power and two extraction pressures. The genset has been working stably and safely for almost twenty years, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Double Automatic Extration Turbine
+                    </li>
+                    <li>
+                    Rated Power: 60MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Shanghai Steam Turbine Works
+                    </li>
+                    <li>
+                    Governor Oil: 14MPa, High Pressure
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH, New Installation
+                    </li>
+                    <li>
+                    Date: Year 2006
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-sinpu3" class="ui modal">
+                    <div class="header">
+                    Sinpu Chemical Unit3 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/sinpu3.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    Sinpu Chemical Unit3 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    Sinpu Chemical Unit3 is a 50MW back pressure &amp; extraction co-generation genset installed in year 2015 by Nanjing Steam Turbine Works, the turbine is running with 14MPa hydraulic oil system. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm. DEH system controls speed, power, extraction pressure, and exhaust pressure. The genset has been working stably and safely since installation, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Extration &amp; Exhause Pressure Turbine
+                    </li>
+                    <li>
+                    Rated Power: 50MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Nanjing Steam Turbine Works
+                    </li>
+                    <li>
+                    Governor Oil: 14MPa, High Pressure
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH, New Installation
+                    </li>
+                    <li>
+                    Date: Year 2015
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-sinpu4" class="ui modal">
+                    <div class="header">
+                    Sinpu Chemical Unit4 DEH Project
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/sinpu4.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    Sinpu Chemical Unit4 DEH Project
+                    </div>
+                    </div>
+                    <p>
+                    Sinpu Chemical Unit4 is a 50MW back pressure &amp; extraction co-generation genset installed in year 2016 by Nanjing Steam Turbine Works, the turbine is running with 14MPa hydraulic oil system. Constar supplied the turbine control system including the Woodward Micronet TMR control system with Ratio/Limiter algorithm. DEH system controls speed, power, extraction pressure, and exhaust pressure. The genset has been working stably and safely since installation, demonstrating the strong engineering capability of Constar.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type: Co-Generation Genset, Extration &amp; Exhause Pressure Turbine
+                    </li>
+                    <li>
+                    Rated Power: 50MW
+                    </li>
+                    <li>
+                    Turbine Manufacture: Nanjing Steam Turbine Works
+                    </li>
+                    <li>
+                    Governor Oil: 14MPa, High Pressure
+                    </li>
+                    <li>
+                    Control System: Micronet TMR
+                    </li>
+                    <li>
+                    Application Type: DEH, New Installation
+                    </li>
+                    <li>
+                    Date: Year 2016
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div id="modal-shijiazhuang2" class="ui modal">
+                    <div class="header">
+                    SINOPEC Shijiazhuang Unit2
+                    </div>
+                    <div class="image content">
+                    <div class="ui container">
+                    <div class="description">
+                    <div class="ui medium right floated spaced image">
+                    <img src="/static/images/en/case/steam/shijiazhuang2.jpg">
+                    <div class="ui bottom attached blue label" style="font-weight:normal" align="center">
+                    SINOPEC Shijiazhuang Unit2&lt;
+                    </div>
+                    </div>
+                    <p>
+                    SINOPEC Shijiazhuang Unit2 is a single extraction steam turbine manufactured by Nanjing Steam Turbine Works. The turbine was installed originally with hydraulic governor, and it was experienced an unsuccessfully upgrade to digital control by other company in 2000. In 2015, Constar successfully retrofit control system with 505E controller and specially designed hydraulic system. The control performance was very satisfied and the turbine has been running stably and safely since then.
+                    </p>
+                    <ul class="ui list">
+                    <li>
+                    Turbine Type:Single Extraction Steam Turbine
+                    </li>
+                    <li>
+                    Rated Power:25MW
+                    </li>
+                    <li>
+                    Turbine Manufacture:Nanjing Steam Turbine Works
+                    </li>
+                    <li>
+                    Control System:505E
+                    </li>
+                    <li>
+                    Project Type:DEH System
+                    </li>
+                    <li>
+                    Project Date:Year 2015
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="actions">
+                    <div class="ui blue deny button" style="font-weight:normal">
+                    Close
+                    </div>
+                    <div class="ui blue primary button">
+                    <a style="font-weight:normal;color:white" href="/en/intro/contact/">Contact Us</a>
+                    </div>
+                    </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <style type="text/css">
+        .ui.accordion.vertical.menu a {
+          color: #000;
+        }
+        
+        .ui.accordion.vertical.menu a:hover {
+          color: #262626;
+          font-weight: 500;
+        }
+        
+        .ui.accordion.vertical.menu a.active {
+          color: #4183c4;
+          font-weight: 700;
+        }
+        
+        #mobile-row {
+          margin-top: 2.5em;
+        }
+        
+        .ui.breadcrumb {
+          font-size: 0.9rem;
+        }
+      </style>
+      <script>
+        // Get the URL and directory of current page
+        var url = window.location.pathname;
+        var directory = url.split('/')[2];
+        
+        // Activate corresponding accordion item content according to the directory
+        var target = $('#' + directory).find('.content');
+        target.addClass('active');
+        
+        // Remove the last '/' in the URL
+        url = url.replace(/\/$/, '');
+        
+        // Activate corresponding link according to the URL
+        var link = 'a[href="' + url + '"]';
+        $(link).not('.section').addClass('active');
+        
+        // Change background of navbar menu's corresponding item
+        var navId = '#nav-' + directory;
+        var navItem = $(navId);
+        navItem.css('background', 'rgba(0,0,0,0.06)');
+      </script>
+    </div>
+    <div id="footer">
+      <footer class="ui inverted vertical center aligned footer segment">
+        <div class="ui container">
+          <p>
+            © 2017 Constar Automation Technology Co., Ltd. <a href="http://www.constar.com.cn" style="color:white"> www.constar.com.cn </a>
+          </p>
+          <div class="item">
+            <a href="#"><i class="wechat icon green" data-html="&lt;img class=&#39;ui image&#39; src=&#39;/static/images/wechat.jpg&#39;&gt;" data-position="top center"></i></a><a href="https://www.facebook.com/ConstarInc"><i class="facebook icon blue"></i></a><a href="https://www.linkedin.com/company/constarinc"><i class="linkedin icon blue"></i></a><a href="https://twitter.com/ConstarInc"><i class="twitter icon blue"></i></a><a href="https://www.youtube.com/channel/UChBKkOrROVa_1pCEmoKHNEw"><i class="youtube icon red"></i></a>
+          </div>
+        </div>
+      </footer>
+      <script src="/static/dist/semantic-ui/semantic.min.js"></script>
+      <script src="/static/dist/swiper/js/swiper.min.js"></script>
+      <script src="/static/javascripts/growingio.js"></script>
+      <script src="/static/javascripts/ga.js"></script>
+      <script src="/static/javascripts/default.js"></script>
+    </div>
+  </body>
+</html>

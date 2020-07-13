@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <!-- Reference to the Bing Maps SDK -->
+    <script type='text/javascript'
+            src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&setMkt=en-US&setLang=en&key=[AhEFbmsppNF1KOXPIFAUQWieE7gak1ThzwP2UkZ_FNzxFuQKa9l-pKM46ZP88IZB]'
+            async defer></script>
+
+    <script type='text/javascript'>
+    function GetMap()
+    {
+      //Add your post map load code here.
+      var map = new Microsoft.Maps.Map('#myMap', {
+        credentials: 'AhEFbmsppNF1KOXPIFAUQWieE7gak1ThzwP2UkZ_FNzxFuQKa9l-pKM46ZP88IZB',
+        center: new Microsoft.Maps.Location(40.112665, 116.608155),
+        mapTypeId: Microsoft.Maps.MapTypeId.road,
+        zoom: 15
+      });
+      var center = map.getCenter();
+
+      //Create custom Pushpin
+      var pin = new Microsoft.Maps.Pushpin(center, {
+          title: 'Constar Automation Technology Co., Ltd.',
+          icon: '/static/images/map_pointer.png',
+      });
+
+      //Add the pushpin to the map
+      map.entities.push(pin);
+    }
+    </script>
+</head>
+<body>
+    <div id="myMap" style="width: 100%; height: 25rem; overflow: hidden; position: relative; z-index: 0;"></div>
+</body>
+</html>
